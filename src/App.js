@@ -172,6 +172,17 @@ const App = () => {
     }
   };
 
+  if (!address) {
+    return (
+      <div className="landing">
+        <h1>Welcome to MooDao</h1>
+        <button onClick={connectWithMetamask} className="btn-hero">
+          Connect your wallet
+        </button>
+      </div>
+    );
+  }
+
   if (network?.[0].data.chain.id !== ChainId.Rinkeby) {
     return (
       <div className="unsupported-network">
@@ -184,18 +195,7 @@ const App = () => {
     );
   }
 
-  // This is the case where the user hasn't connected their wallet
-  // to your web app. Let them call connectWallet.
-  if (!address) {
-    return (
-      <div className="landing">
-        <h1>Welcome to NarutoDAO</h1>
-        <button onClick={connectWithMetamask} className="btn-hero">
-          Connect your wallet
-        </button>
-      </div>
-    );
-  }
+  
 
   if (hasClaimedNFT) {
     return (
